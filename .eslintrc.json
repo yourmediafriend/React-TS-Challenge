@@ -14,9 +14,10 @@
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:import/typescript",
+		"plugin:jest/recommended",
 		"prettier"
 	],
-	"plugins": ["@typescript-eslint", "react", "react-hooks", "prettier"],
+	"plugins": ["@typescript-eslint", "react", "react-hooks", "jest", "prettier"],
 	"rules": {
 		"@typescript-eslint/explicit-member-accessibility": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
@@ -89,7 +90,12 @@
 			{
 				"devDependencies": ["**/*.test.+(js|ts|tsx)", "**/*.spec.+(js|ts|tsx)"]
 			}
-		]
+		],
+		"jest/no-disabled-tests": "warn",
+		"jest/no-focused-tests": "error",
+		"jest/no-identical-title": "error",
+		"jest/prefer-to-have-length": "warn",
+		"jest/valid-expect": "error"
 	},
 	"overrides": [
 		{
