@@ -15,8 +15,6 @@ const MovieDetails = ({ id }: MovieDetailsProps): JSX.Element | null => {
 	const tmdbResonse = useGetData(url);
 	const movieDetail = tmdbResonse && tmdbResonse.data;
 
-	console.log("tmdbResonse: Movie", movieDetail);
-
 	return movieDetail ? (
 		<div
 			style={{
@@ -25,11 +23,16 @@ const MovieDetails = ({ id }: MovieDetailsProps): JSX.Element | null => {
 		>
 			<h1>{movieDetail.original_title}</h1>
 			<MoviePoster
-				image={movieDetail.poster_path}
-				name={movieDetail.original_title}
+				image_url={movieDetail.poster_path}
+				alt={movieDetail.original_title}
 				size={TMDB_IMAGESIZES.poster_sizes[4]}
 			/>
-			<a href={`https://www.imdb.com/title/${movieDetail.imdb_id}`} target="_blank">IMDB</p>
+			<a
+				href={`https://www.imdb.com/title/${movieDetail.imdb_id}`}
+				target="_blank"
+			>
+				IMDB
+			</a>
 			<p>{movieDetail.popularity}</p>
 			<p>{movieDetail.runtime}</p>
 			<p>{movieDetail.release_date}</p>

@@ -1,24 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MoviePoster from "../MoviePoster/MoviePoster";
-import { TMDB_API } from "../../utils/constants/tmdbApi";
-//import { movieDetailType } from "../../utils/types/movieDetailType";
+import { movieDetailType } from "../../utils/types/movieDetailType";
 
-// use Partial of movieDetails
+type CardProps = Partial<movieDetailType>;
 
-type CardProps = {
-	id: number;
-	image: string;
-	name: string;
-	releaseDate: string;
-};
-
-const Card = ({ id, image, name, releaseDate }: CardProps) => {
+const Card = ({ id, poster_path, original_title, release_date }: CardProps) => {
 	return (
 		<Link to={`movie/${id}`}>
-			<MoviePoster image={image} name={name} />
-			<h1>{name}</h1>
-			<h2>{releaseDate}</h2>
+			{poster_path && original_title && (
+				<MoviePoster image_url={poster_path} alt={original_title} />
+			)}
+			<h1>{original_title}</h1>
+			<h2>{release_date}</h2>
 		</Link>
 	);
 };

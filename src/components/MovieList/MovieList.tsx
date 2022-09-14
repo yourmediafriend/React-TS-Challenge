@@ -13,17 +13,15 @@ const MovieList = () => {
 
 	const movieList = tmdbResonse && tmdbResonse?.data?.results;
 
-	console.log(movieList && movieList[0]);
-
 	return (
 		<div>
 			{movieList?.map((detail) => (
 				<MovieCard
 					key={detail.id}
 					id={detail.id}
-					image={detail.poster_path}
-					name={detail.original_title}
-					releaseDate={detail.release_date}
+					poster_path={detail.poster_path}
+					original_title={detail.original_title}
+					release_date={detail.release_date}
 				/>
 			))}
 		</div>
