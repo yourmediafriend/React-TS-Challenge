@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import MovieCard from "../MovieCard";
 import ListHeader from "./ListHeader";
 import { TMDB_API } from "../../utils/constants/tmdbApi"; // To be replaced with your api response data
 import useGetData from "../../utils/hooks/useGetData";
@@ -9,6 +7,8 @@ import {
 	sortByRating,
 	sortByDate,
 } from "../../utils/helpers/sortMovies";
+import { movieDetailType } from "../../utils/types/movieDetailType";
+import MovieGrid from "./MovieGrid";
 
 const { AUTH, ENDPOINT, DISCOVER } = TMDB_API;
 const apiQuery = `?api_key=${AUTH}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=1970`;
@@ -20,46 +20,30 @@ enum SORT_TYPES {
 	RATING = "rating",
 }
 
-const MovieGridSC = styled.div`
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	grid-gap: 10px;
-`;
-
 const MovieList = () => {
-	const [sortOrderType, setSortOrderType] = useState<string>();
-	const [sortedList, setSortedList] = useState();
+	const [sortedList, setSortedList] = useState<movieDetailType[]>();
+
 	const tmdbResonse = useGetData(url);
 	const loading = tmdbResonse && tmdbResonse?.loading;
 	const movieList = tmdbResonse && tmdbResonse?.data?.results;
 
 	useEffect(() => {
-		switch (sortOrderType) {
-			case SORT_TYPES.DATE:
-				setSortedList(sortByDate(movieList));
-				break;
-			case SORT_TYPES.TITLE:
-				setSortedList(sortByTitle(movieList));
-				break;
-			case SORT_TYPES.RATING:
-				setSortedList(sortByRating(movieList));
-				break;
-			default:
-				setSortedList(movieList);
-				break;
-		}
-	}, [sortOrderType, movieList]);
+		setSortedList(movieList);
+	}, [tmdbResonse]);
 
-	const sortByReleaseDate = () => {
-		setSortOrderType(SORT_TYPES.DATE);
+	const sortByReleaseDate = (e: React.MouseEvent<HTMLElement>) => {
+		e.preventDefault();
+		setSortedList(sortByDate(movieList));
 	};
 
-	const sortByTitleMethod = () => {
-		setSortOrderType(SORT_TYPES.TITLE);
+	const sortByTitleMethod = (e: React.MouseEvent<HTMLElement>) => {
+		e.preventDefault();
+		setSortedList(sortByTitle(movieList));
 	};
 
-	const sortByPopularity = () => {
-		setSortOrderType(SORT_TYPES.RATING);
+	const sortByPopularity = (e: React.MouseEvent<HTMLElement>) => {
+		e.preventDefault();
+		setSortedList(sortByRating(movieList));
 	};
 
 	return (
@@ -69,23 +53,7 @@ const MovieList = () => {
 				sortByTitle={sortByTitleMethod}
 				sortByPopularity={sortByPopularity}
 			/>
-			{!loading && sortedList && (
-				<>
-					<MovieGridSC>
-						{sortedList?.map((detail) => (
-							<MovieCard
-								key={detail.id}
-								id={detail.id}
-								poster_path={detail.poster_path}
-								original_title={detail.original_title}
-								title={detail.title}
-								release_date={detail.release_date}
-								popularity={detail.popularity}
-							/>
-						))}
-					</MovieGridSC>
-				</>
-			)}
+			<MovieGrid loading={loading} sortedList={sortedList} />
 		</>
 	);
 };

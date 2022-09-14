@@ -11,7 +11,17 @@ const SortButtonsWrapperSC = styled.div`
 	margin-left: auto;
 `;
 
-const ListHeader = ({ sortByTitle, sortByReleaseDate, sortByPopularity }) => {
+type Props = {
+	sortByTitle: (x: React.MouseEvent<HTMLElement>) => void;
+	sortByReleaseDate: (x: React.MouseEvent<HTMLElement>) => void;
+	sortByPopularity: (x: React.MouseEvent<HTMLElement>) => void;
+};
+
+const ListHeader = ({
+	sortByTitle,
+	sortByReleaseDate,
+	sortByPopularity,
+}: Props): JSX.Element => {
 	return (
 		<ListHeaderSC>
 			<h1>Movies</h1>

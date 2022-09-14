@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { TMDB_API, TMDB_IMAGESIZES } from "../../utils/constants/tmdbApi";
 import useGetData from "../../utils/hooks/useGetData";
 import MoviePoster from "../MoviePoster/MoviePoster";
+import { genreType } from "../../utils/types/movieLongDetailType";
 
 const { AUTH, ENDPOINT, MOVIE, URL } = TMDB_API;
 const apiQuery = `?api_key=${AUTH}`;
@@ -79,7 +80,7 @@ const MovieDetails = ({ id }: MovieDetailsProps): JSX.Element | null => {
 				<p>{movieDetail.release_date}</p>
 				<p>{movieDetail.overview}</p>
 				<ul>
-					{movieDetail.genres.map((genre) => (
+					{movieDetail.genres.map((genre: genreType) => (
 						<li>{genre.name}</li>
 					))}
 				</ul>

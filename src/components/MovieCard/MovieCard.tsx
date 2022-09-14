@@ -33,8 +33,7 @@ const Card = ({
 	title,
 	popularity,
 }: CardProps) => {
-	const date = new Date(release_date);
-	const yyyy = date.getFullYear();
+	const yyyy = release_date && new Date(release_date).getFullYear();
 
 	return (
 		<LinkSC to={`movie/${id}`}>
