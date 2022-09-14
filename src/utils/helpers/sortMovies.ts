@@ -27,3 +27,14 @@ export const sortByDate = (data: movieDetailType[]) =>
 			? 1
 			: 0;
 	});
+
+export const searchTitle = (data: movieDetailType[], query: string) =>
+	data.filter((obj) => {
+		return (
+			obj.title
+				.toLowerCase()
+				.startsWith(
+					query.toLowerCase().slice(0, Math.max(obj.title.length - 1, 1))
+				) && obj
+		);
+	});

@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { tmdbMovieResponseType } from "../types/tmdbMovieResponseType";
 import { tmdbDiscoverResponseType } from "../types/tmdbDiscoverResponseType";
 
-//tmdbMovieResponseType | tmdbDiscoverResponseType | null
+// How do I have different data type
+// do I need to exten
+//
+
 const useGetData = (url: string) => {
 	const [fetchResponse, setFetchResponse] = useState<{
-		data: any;
+		data: (tmdbMovieResponseType & tmdbDiscoverResponseType) | null;
 		error: Record<string, string> | null;
 		loading: boolean;
 	}>({
