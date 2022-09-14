@@ -42,9 +42,9 @@ const InnerWrapperSC = styled.div<{ center: boolean }>`
 
 type Props = {
 	className?: string;
-	children?: any;
+	children?: JSX.Element | string | number | null;
 	center?: boolean;
-};
+} & typeof defaultProps;
 
 const defaultProps = {
 	className: "",
@@ -52,17 +52,18 @@ const defaultProps = {
 	center: false,
 };
 
-export const InnerWrapper = forwardRef<HTMLInputElement>(
-	({ className, children, center }: Props, ref): JSX.Element => {
-		return (
-			<InnerWrapperSC ref={ref} className={className} center={center}>
-				{children}
-			</InnerWrapperSC>
-		);
-	}
-);
+export const InnerWrapper = ({
+	className,
+	children,
+	center = defaultProps.center,
+}: Props): JSX.Element => {
+	return (
+		<InnerWrapperSC className={className} center={center}>
+			{children}
+		</InnerWrapperSC>
+	);
+};
 
-InnerWrapper.displayName = "InnerWrapper";
 InnerWrapper.defaultProps = defaultProps;
 
 export default InnerWrapper;

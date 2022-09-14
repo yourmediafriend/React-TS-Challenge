@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import { GlobalStyle } from "./styles/GlobalStyle";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
-import "./global.css";
 
 const App = () => (
 	<>
+		<GlobalStyle />
 		<BrowserRouter>
 			<Header />
 			<main>

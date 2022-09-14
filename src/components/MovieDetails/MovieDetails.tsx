@@ -14,8 +14,9 @@ const MovieDetails = ({ id }: MovieDetailsProps): JSX.Element | null => {
 	const url = `${ENDPOINT}${MOVIE}/${id}${apiQuery}`;
 	const tmdbResonse = useGetData(url);
 	const movieDetail = tmdbResonse && tmdbResonse.data;
+	const loading = tmdbResonse && tmdbResonse.loading;
 
-	return movieDetail ? (
+	return !loading && movieDetail ? (
 		<div
 			style={{
 				background: `url(${URL}/t/p/original/wQraxOsaq0NwTO9rSwLo4Nc8hVG.jpg)`,

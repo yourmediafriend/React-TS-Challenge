@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { tmdbMovieResponseType } from "../types/tmdbMovieResponseType";
 import { tmdbDiscoverResponseType } from "../types/tmdbDiscoverResponseType";
 
+//tmdbMovieResponseType | tmdbDiscoverResponseType | null
 const useGetData = (url: string) => {
 	const [fetchResponse, setFetchResponse] = useState<{
-		data: tmdbMovieResponseType | tmdbDiscoverResponseType | null;
+		data: any;
 		error: Record<string, string> | null;
 		loading: boolean;
 	}>({

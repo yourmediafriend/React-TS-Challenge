@@ -21,8 +21,20 @@ const GridContainerSC = styled.div`
 	}
 `;
 
-export const ContentGrid = ({ children, className }): JSX.Element => (
+type Props = {
+	className?: string;
+	children?: any;
+};
+
+const defaultProps = {
+	className: "",
+	children: null,
+};
+
+export const ContentGrid = ({ children, className }: Props): JSX.Element => (
 	<GridContainerSC className={className}>{children}</GridContainerSC>
 );
+
+ContentGrid.defaultProps = defaultProps;
 
 export default ContentGrid;
