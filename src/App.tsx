@@ -5,22 +5,20 @@ import Home from "./pages/Home";
 import Details from "./pages/Details";
 import "./global.css";
 
-class App extends Component {
-	render() {
-		return (
-			<>
-				<Header />
-				<main>
-					<section>
-						<Routes>
-							<Route path={"/"} element={<Home />} />
-							<Route path={"/details"} element={<Details />} />
-						</Routes>
-					</section>
-				</main>
-			</>
-		);
-	}
-}
+const App = () => (
+	<>
+		<BrowserRouter>
+			<Header />
+			<main>
+				<section>
+					<Routes>
+						<Route path={"/"} element={<Home />} />
+						<Route path={"/movie/:id"} element={<Details />} />
+					</Routes>
+				</section>
+			</main>
+		</BrowserRouter>
+	</>
+);
 
 export default App;

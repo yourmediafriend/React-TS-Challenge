@@ -1,5 +1,5 @@
-describe(`Product Card`, () => {
-	test.todo("Fetches a response from TMDB API");
+describe(`Movie List`, () => {
+	test.todo("Fetches a List of Movies from TMDB API");
 	test.todo("Sorts MovieList");
-	test.todo("Displays Movies as Grid / List");
+	test.todo("Displays Movies Cards as Grid / List");
 });

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { tmdbResponse } from "../types/tmdbResponse";
+import { tmdbMovieResponseType } from "../types/tmdbMovieResponseType";
+import { tmdbDiscoverResponseType } from "../types/tmdbDiscoverResponseType";
 
 const useGetData = (url: string) => {
 	const [fetchResponse, setFetchResponse] = useState<{
-		data: tmdbResponse | null;
+		data: tmdbDiscoverResponseType | null;
 		error: Record<string, string> | null;
 		loading: boolean;
 	}>({
@@ -33,6 +34,7 @@ const useGetData = (url: string) => {
 		});
 	}, [url]);
 
+	console.log("fetchResponse", fetchResponse);
 	return fetchResponse;
 };
 
