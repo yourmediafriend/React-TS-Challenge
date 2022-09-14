@@ -4,12 +4,14 @@ import MovieCard from "../MovieCard";
 import ListHeader from "./ListHeader";
 import { TMDB_API } from "../../utils/constants/tmdbApi"; // To be replaced with your api response data
 import useGetData from "../../utils/hooks/useGetData";
-import { sortByTitle } from "../../utils/helpers/sortByTitle";
-import { sortByDate } from "../../utils/helpers/sortByDate";
-import { sortByRating } from "../../utils/helpers/sortByRating";
+import {
+	sortByTitle,
+	sortByRating,
+	sortByDate,
+} from "../../utils/helpers/sortMovies";
 
 const { AUTH, ENDPOINT, DISCOVER } = TMDB_API;
-const apiQuery = `?api_key=${AUTH}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=1985&with_watch_monetization_types=flatrate`;
+const apiQuery = `?api_key=${AUTH}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=1970`;
 const url = `${ENDPOINT}${DISCOVER}${apiQuery}`;
 
 enum SORT_TYPES {
@@ -32,7 +34,6 @@ const MovieList = () => {
 	const movieList = tmdbResonse && tmdbResonse?.data?.results;
 
 	useEffect(() => {
-		console.log("sortOrderType", sortOrderType);
 		switch (sortOrderType) {
 			case SORT_TYPES.DATE:
 				setSortedList(sortByDate(movieList));
