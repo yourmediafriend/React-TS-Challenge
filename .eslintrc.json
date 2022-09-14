@@ -106,3 +106,111 @@
 		}
 	]
 }
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 2018,
+		"sourceType": "module"
+	},
+	"ignorePatterns": ["**/*"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:import/typescript",
+		"plugin:jest/recommended",
+		"prettier"
+	],
+	"plugins": ["@typescript-eslint", "react", "react-hooks", "jest", "prettier"],
+	"rules": {
+		"@typescript-eslint/explicit-member-accessibility": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/no-parameter-properties": "off",
+		"@typescript-eslint/camelcase": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"react/jsx-filename-extension": 0,
+		"react/jsx-props-no-spreading": 0,
+		"react/static-property-placement": 0,
+		"react/prop-types": 0,
+		"import/named": 0,
+		"import/prefer-default-export": 0,
+		"camelcase": 0,
+		"no-tabs": 0,
+		"no-plusplus": 0,
+		"radix": [2, "as-needed"],
+		"quotes": [
+			2,
+			"double",
+			{
+				"allowTemplateLiterals": true,
+				"avoidEscape": true
+			}
+		],
+		"import/no-mutable-exports": 0,
+		"react/button-has-type": 0,
+		"jsx-a11y/label-has-for": 0,
+		"import/no-cycle": 0,
+		"import/no-named-as-default": 0,
+		"react-hooks/rules-of-hooks": "off",
+		"react-hooks/exhaustive-deps": "off",
+		"react/jsx-key": 2,
+		"no-console": 0,
+		"no-alert": 2,
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-use-before-define": ["error"],
+		"react/no-array-index-key": 2,
+		"max-len": [0, 180],
+		"jsx-a11y/label-has-associated-control": [0],
+		"jsx-a11y/no-autofocus": [0],
+		"import/no-unresolved": [
+			"error",
+			{
+				"ignore": ["^@"]
+			}
+		],
+		"import/extensions": "off",
+		"no-unused-expressions": "off",
+		"no-nested-ternary": "off",
+		"react/state-in-constructor": "off",
+		"@typescript-eslint/no-empty-function": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"no-restricted-globals": "off",
+		"jsx-a11y/mouse-events-have-key-events": "off",
+		"no-restricted-exports": [
+			"error",
+			{
+				"restrictedNamedExports": ["then"]
+			}
+		],
+		"react/function-component-definition": [
+			"off",
+			{
+				"namedComponents": ["function-declaration", "function-expression"],
+				"unnamedComponents": "function-expression"
+			}
+		],
+		"import/no-extraneous-dependencies": [
+			"error",
+			{
+				"devDependencies": ["**/*.test.+(js|ts|tsx)", "**/*.spec.+(js|ts|tsx)"]
+			}
+		],
+		"jest/no-disabled-tests": "warn",
+		"jest/no-focused-tests": "error",
+		"jest/no-identical-title": "error",
+		"jest/prefer-to-have-length": "warn",
+		"jest/valid-expect": "error"
+	},
+	"overrides": [
+		{
+			"files": ["*.tsx"],
+			"rules": {
+				"@typescript-eslint/no-unused-vars": "off"
+			}
+		}
+	]
+}
