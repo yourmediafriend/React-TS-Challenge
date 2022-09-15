@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Card Matches snapshot 1`] = `
+<a
+  className="MovieCard__LinkSC-sc-1q6eeff-0 bbvbZr"
+  data-testid="movie-link"
+  href="/movie/13382"
+  onClick={[Function]}
+>
+  <img
+    alt="Rudolph the Red-Nosed Reindeer"
+    className="MovieCard__MoviePosterSC-sc-1q6eeff-1 bRQxcS"
+    data-testid="movie-poster"
+    src="https://www.themoviedb.org/t/p/w342//WvJj5TsW3lPJcbbvZtJazsFhvY.jpg"
+  />
+  <div
+    className="MovieCard__MovieDetailSC-sc-1q6eeff-2 egIeWa"
+  >
+    <h3
+      className="MovieCard__MovieTtitleSC-sc-1q6eeff-3 hHbbLc title"
+      data-testid="movie-title"
+    >
+      Rudolph the Red-Nosed Reindeer
+    </h3>
+    <h4
+      className="releaseDate"
+      data-testid="movie-release-year"
+    >
+      1964
+    </h4>
+    <p
+      data-testid="movie-rating"
+    >
+      16.869
+    </p>
+  </div>
+</a>
+`;

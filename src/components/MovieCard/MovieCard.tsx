@@ -17,10 +17,12 @@ const MoviePosterSC = styled(MoviePoster)`
 const MovieDetailSC = styled.div`
 	width: 100%;
 	padding: 10px;
-	.title {
-	}
-	.releaseDate {
-	}
+`;
+
+const MovieTtitleSC = styled.h3`
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1.3em;
 `;
 
 type CardProps = Partial<movieDetailType>;
@@ -36,18 +38,22 @@ const Card = ({
 	const yyyy = release_date && new Date(release_date).getFullYear();
 
 	return (
-		<LinkSC to={`movie/${id}`}>
-			{poster_path && original_title && (
+		<LinkSC to={`movie/${id}`} data-testid="movie-link">
+			{poster_path && title && (
 				<MoviePosterSC
 					image_url={poster_path}
-					alt={original_title}
+					alt={title}
 					size={TMDB_IMAGESIZES.poster_sizes[3]}
 				/>
 			)}
 			<MovieDetailSC>
-				<h3 className={"title"}>{title}</h3>
-				<h4 className={"releaseDate"}>{yyyy}</h4>
-				{popularity}
+				<MovieTtitleSC className={"title"} data-testid="movie-title">
+					{title}
+				</MovieTtitleSC>
+				<h4 className={"releaseDate"} data-testid="movie-release-year">
+					{yyyy}
+				</h4>
+				<p data-testid="movie-rating">{popularity}</p>
 			</MovieDetailSC>
 		</LinkSC>
 	);

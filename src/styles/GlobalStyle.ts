@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import styleSettings from "../utils/settings/styleSettings";
 
-const { fonts, colors } = styleSettings;
+const { colors } = styleSettings;
 
 export const GlobalStyle = createGlobalStyle`
   ${reset} 
@@ -14,17 +14,17 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     scroll-behavior: smooth;
     color: ${colors.grey.black};
-    font-weight: ${fonts.primary.regular.fontWeight};
-    font-family: ${fonts.primary.fontFamily};
+    font-weight: normal;
+    font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
   }
   body {
     line-height: 1.5;
     letter-spacing: 0;
-    background-color: #ffffff;
+    background-color: ${colors.grey.white};
   }
   h1,h2,h3,h4,h5,h6 {
-    font-weight: ${fonts.primary.bold.fontWeight};
-    font-family: ${fonts.primary.fontFamily};
+    font-weight: normal;
+    font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
   }
   button {
     outline: none;

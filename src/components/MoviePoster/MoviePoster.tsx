@@ -26,6 +26,7 @@ const MoviePoster = ({
 			className={className}
 			src={`${URL}/t/p/${size}/${image_url}`}
 			alt={alt}
+			data-testid="movie-poster"
 		/>
 	);
 };

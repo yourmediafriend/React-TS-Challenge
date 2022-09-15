@@ -12,7 +12,7 @@ import { movieDetailType } from "../../utils/types/movieDetailType";
 import MovieGrid from "./MovieGrid";
 
 const { AUTH, ENDPOINT, DISCOVER } = TMDB_API;
-const apiQuery = `?api_key=${AUTH}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=1970`;
+const apiQuery = `?api_key=${AUTH}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2&year=1970`;
 const url = `${ENDPOINT}${DISCOVER}${apiQuery}`;
 
 const MovieList = () => {
@@ -33,17 +33,17 @@ const MovieList = () => {
 	}, [query]);
 
 	const sortByReleaseDate = (e: React.MouseEvent<HTMLElement>) => {
-		setSortedList(movieList && sortByDate(movieList));
+		setSortedList(movieList && sortByDate([...movieList]));
 	};
 
 	const sortByTitleMethod = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
-		setSortedList(movieList && sortByTitle(movieList));
+		setSortedList(movieList && sortByTitle([...movieList]));
 	};
 
 	const sortByPopularity = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
-		setSortedList(movieList && sortByRating(movieList));
+		setSortedList(movieList && sortByRating([...movieList]));
 	};
 
 	return (
